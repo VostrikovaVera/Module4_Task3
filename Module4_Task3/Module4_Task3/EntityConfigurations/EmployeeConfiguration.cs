@@ -14,25 +14,17 @@ namespace Module4_Task3.EntityConfigurations
             builder.Property(p => p.FirstName).IsRequired().HasMaxLength(30);
             builder.Property(p => p.LastName).IsRequired().HasMaxLength(30);
             builder.Property(p => p.HiredDate).IsRequired().HasColumnType("date");
-            builder.Property(p => p.DateOfBirth).IsRequired().HasColumnType("date");
-
-            /*builder.HasMany(c => c.Products)
-                .WithMany(s => s.Companies)
-                .UsingEntity<Dictionary<string, object>>(
-                    "Supply",
-                    j => j
-                        .HasOne<Product>()
-                        .WithMany()
-                        .HasForeignKey("ProductId"),
-                    j => j
-                        .HasOne<Company>()
-                        .WithMany()
-                        .HasForeignKey("CompanyId"));*/
+            builder.Property(p => p.DateOfBirth).HasColumnType("date");
 
             builder.HasOne(d => d.Title)
                 .WithMany(p => p.Employees)
                 .HasForeignKey(d => d.TitleId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(d => d.Office)
+                .WithMany(p => p.Employees)
+                .HasForeignKey(d => d.OfficeId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(new List<Employee>()
             {

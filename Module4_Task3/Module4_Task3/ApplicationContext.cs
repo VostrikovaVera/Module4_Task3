@@ -22,10 +22,10 @@ namespace Module4_Task3
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
-            /*modelBuilder.ApplyConfiguration(new OfficeConfiguration());
+            modelBuilder.ApplyConfiguration(new OfficeConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeProjectConfiguration());*/
+            modelBuilder.ApplyConfiguration(new EmployeeProjectConfiguration());
         }
     }
 }

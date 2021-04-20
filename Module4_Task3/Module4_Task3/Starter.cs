@@ -24,14 +24,6 @@ namespace Module4_Task3
 
             using (var db = new ApplicationContext(options))
             {
-                var employees = db.Employees.ToList();
-                foreach (var employee in employees)
-                {
-                    Console.WriteLine($"{employee.Id} - {employee.FirstName} {employee.LastName} - {employee.HiredDate:dd/MM/yyyy}");
-                }
-
-                db.Employees.Add(new Employee() { EmployeeId = 3, FirstName = "Monica", LastName = "Geller", DateOfBirth = new DateTime(1980, 10, 12), HiredDate = new DateTime(2016, 11, 26), OfficeId = 2, TitleId = 2 });
-                db.SaveChanges();
             }
 
             Console.Read();
