@@ -13,7 +13,7 @@ namespace Module4_Task3.EntityConfigurations
             builder.ToTable("Project").HasKey(p => p.ProjectId);
             builder.Property(p => p.Name).IsRequired().HasMaxLength(50);
             builder.Property(p => p.Budget).IsRequired().HasColumnType("money");
-            builder.Property(p => p.StartedDate).HasColumnType("date");
+            builder.Property(p => p.StartedDate).HasColumnType("datetime2(7)");
 
             builder.HasData(new List<Project>()
             {

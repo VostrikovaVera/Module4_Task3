@@ -11,15 +11,15 @@ namespace Module4_Task3.EntityConfigurations
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
             builder.ToTable("Employee").HasKey(p => p.EmployeeId);
-            builder.Property(p => p.FirstName).IsRequired().HasMaxLength(30);
-            builder.Property(p => p.LastName).IsRequired().HasMaxLength(30);
-            builder.Property(p => p.HiredDate).IsRequired().HasColumnType("date");
+            builder.Property(p => p.FirstName).IsRequired().HasMaxLength(50);
+            builder.Property(p => p.LastName).IsRequired().HasMaxLength(50);
+            builder.Property(p => p.HiredDate).IsRequired().HasColumnType("datetime2(7)");
             builder.Property(p => p.DateOfBirth).HasColumnType("date");
 
             builder.HasOne(d => d.Title)
                 .WithMany(p => p.Employees)
                 .HasForeignKey(d => d.TitleId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(d => d.Office)
                 .WithMany(p => p.Employees)

@@ -12,7 +12,7 @@ namespace Module4_Task3.EntityConfigurations
         {
             builder.ToTable("EmployeeProject").HasKey(p => p.EmployeeProjectId);
             builder.Property(p => p.Rate).IsRequired().HasColumnType("money");
-            builder.Property(p => p.StartedDate).IsRequired().HasColumnType("date");
+            builder.Property(p => p.StartedDate).IsRequired().HasColumnType("datetime2(7)");
 
             builder.HasOne(d => d.Employee)
                 .WithMany(p => p.EmployeeProjects)
