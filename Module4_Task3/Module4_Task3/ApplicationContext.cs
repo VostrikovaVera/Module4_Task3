@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Module4_Task3.Entities;
 using Module4_Task3.EntityConfigurations;
 
@@ -9,8 +11,6 @@ namespace Module4_Task3
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
         }
 
         public DbSet<Employee> Employees { get; set; }
@@ -18,6 +18,11 @@ namespace Module4_Task3
         public DbSet<Project> Projects { get; set; }
         public DbSet<Title> Titles { get; set; }
         public DbSet<EmployeeProject> EmployeeProjects { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging().LogTo(Console.WriteLine, LogLevel.Information);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
