@@ -11,6 +11,6 @@ namespace Module4_Task3.Entities
         public DateTime? FoundationDate { get; set; }
         public string ActvityScope { get; set; }
 
-        public List<Project> Projects { get; set; } = new List<Project>();
+        public virtual List<Project> Projects { get; set; } = new List<Project>();
     }
 }
