@@ -11,7 +11,7 @@ namespace Module4_Task3.Entities
         public DateTime HiredDate { get; set; }
         public DateTime? DateOfBirth { get; set; }
 
-        public int OfficeId { get; set; }
+        public int? OfficeId { get; set; }
         public virtual Office Office { get; set; }
 
         public int TitleId { get; set; }
